@@ -61,7 +61,7 @@ RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* 
 ENV LANG en_US.UTF-8
 RUN echo "export LANG=en_US.UTF-8" >> /etc/environment
 
-# Standard SSH port
+#Standard SSH port
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
