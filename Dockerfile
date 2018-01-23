@@ -45,12 +45,6 @@ RUN apt-get install -y ant
 
 RUN apt-get install -y vim
 
-#Cleaning
-
-RUN apt-get clean
-RUN apt-get autoclean
-RUN apt-get autoremove
-
 #install deps for build-specific tools
 
 RUN yes | /opt/android-sdk-linux/tools/bin/sdkmanager --licenses
@@ -60,6 +54,12 @@ RUN yes | /opt/android-sdk-linux/tools/bin/sdkmanager "ndk-bundle" "platforms;an
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.UTF-8
 RUN echo "export LANG=en_US.UTF-8" >> /etc/environment
+
+#Cleaning
+
+RUN apt-get clean
+RUN apt-get autoclean
+RUN apt-get autoremove
 
 #Standard SSH port
 
