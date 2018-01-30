@@ -51,7 +51,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 RUN mkdir /opt/android-sdk-linux && cd /opt/android-sdk-linux && wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && unzip sdk-tools-linux-3859397.zip && rm -f sdk-tools-linux-3859397.zip
 
-RUN chown -R root:root /opt/android-sdk-linux && chmod -R 775 /opt/android-sdk-linux
+RUN chown -R root:jenkins /opt/android-sdk-linux && chmod -R 775 /opt/android-sdk-linux
 
 #install ant
 
@@ -65,7 +65,11 @@ RUN apt-get install -y vim
 
 RUN yes | /opt/android-sdk-linux/tools/bin/sdkmanager --licenses
 
+USER jenkins
+
 RUN mkdir -p ~/.android && touch ~/.android/repositories.cfg
+
+USER root
 
 RUN yes | /opt/android-sdk-linux/tools/bin/sdkmanager "ndk-bundle" "platforms;android-23" "build-tools;23.0.2" "build-tools;23.0.3" "extras;android;m2repository"
 
