@@ -14,6 +14,9 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/gradl
 RUN echo "export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:/opt/gradle/gradle-4.4.1/bin" >> /etc/environment
 
 RUN echo "root:root" | chpasswd
+RUN useradd -ms /bin/bash jenkins
+RUN echo "jenkins:jenkins" | chpasswd
+
 
 #install java
 

@@ -4,5 +4,6 @@ docker run -d \
 	--name test1 \
 	-v /home/jenkins:/root \
 	-v /home/jenkins:/home/jenkins \
+	-v /opt/android-sdk-linux:/opt/android-sdk-linux
        	-p 23:22 \
-	zapbranigan/ubuntu_android_sdk_jenkins_slave:latest
+	zapbranigan/builder-ubuntu-android-sdk:latest
